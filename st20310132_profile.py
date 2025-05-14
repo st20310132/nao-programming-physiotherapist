@@ -31,7 +31,7 @@ class PhysiotherapyAssistant(object):
 
         # Initialize Ollama LLM API details
         self.ollama_url = ollama_url
-        self.ollama_model = "mistral"  # Default model, can be changed to any model available in your Ollama instance
+        self.ollama_model = "mistral"  # Using Mistral Model
 
         # Patient data storage
         self.patients_dir = "patient_profiles"
@@ -83,12 +83,7 @@ class PhysiotherapyAssistant(object):
         - timeout: seconds to listen for
         - vocabulary: optional list of words to recognize specifically
         """
-        #try:
-        #   self.asr.unsubscribe("PhysiotherapyAssistant")
-        #except:
-        #     pass  # If already unsubscribed, that's fine
-        # If no vocabulary is provided, use a generic large vocabulary
-        # NAO's ASR works best with a defined vocabulary
+
         if vocabulary is None:
             # Basic vocabulary for general responses
             vocabulary = [
@@ -135,8 +130,7 @@ class PhysiotherapyAssistant(object):
                 time.sleep(0.5)  # Brief pause to collect more words
 
                 # For a real application, we would use a more sophisticated approach
-                # to collect multiple words and form sentences.
-                # Due to NAO's ASR limitations, we might need to use LLM to interpret
+                # to collect multiple words and form sentences.                
                 # partial phrases or single words in context.
 
             time.sleep(0.2)  # Check every 200ms
@@ -163,8 +157,7 @@ class PhysiotherapyAssistant(object):
 
         # Simulated response for development and testing
         # In a real environment, we'd use NAO's ASR more effectively
-        # However, for complex medical conversations, we might need to
-        # supplement with a tablet interface or external microphone
+
 
         # For this demo, we'll use simulated responses if NAO's ASR fails
         if not response:
